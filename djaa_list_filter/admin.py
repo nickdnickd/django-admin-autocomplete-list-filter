@@ -66,7 +66,7 @@ class AjaxAutocompleteListFilter(admin.RelatedFieldListFilter):
         initial_values = dict(querystring_value=request.GET.urlencode())
         if autocomplete_field_initial_value:
             initial_values.update(autocomplete_field=autocomplete_field_initial_value)
-        self.autocomplete_form = AutocompleteForm(initial=initial_values)
+        self.autocomplete_form = AutocompleteForm(initial=initial_values, prefix=field.name)
 
     def get_queryset_for_field(self, model, name):
         """
